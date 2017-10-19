@@ -1,0 +1,13 @@
+#!/bin/sh
+# Change UID to the one from user
+set -e
+
+if [ `id -u mysql` != ${UID} ]; then
+	usermod -u ${UID} mysql
+fi
+if [ `id -g mysql` != ${GID} ]; then
+	groupmod -g ${GID} mysql
+fi
+
+# Call parent entrypoint
+exec docker-entrypoint.sh "$@"
