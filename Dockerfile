@@ -1,4 +1,4 @@
-FROM mysql:latest
+FROM mysql:5.5
 
 # Tools to change the uid on run
 RUN apt-get update && \
